@@ -13,7 +13,6 @@ public class DeckOfCards {
 
     /**
      * Creates a new deck of 52 cards. A deck contains 4 suits, each with 13 cards.
-     * 
      */
     public DeckOfCards() {
         cards = new ArrayList<>();
@@ -32,7 +31,7 @@ public class DeckOfCards {
      * @throws IllegalArgumentException if n is greater than the number of cards in the deck or negative
      * @return n number of random playing cards
      */
-    public Collection<PlayingCard> dealHand(int n) {
+    public Collection<PlayingCard> dealHand(int n) throws IllegalArgumentException {
         if (n > cards.size() || n < 0) {
             throw new IllegalArgumentException("Parameter n must be between 0 and " + cards.size());
         } 
