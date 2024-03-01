@@ -1,7 +1,8 @@
 package edu.stud.stianoj.cardgame;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Random;
 
 public class DeckOfCards {
@@ -31,19 +32,30 @@ public class DeckOfCards {
      * @throws IllegalArgumentException if n is greater than the number of cards in the deck or negative
      * @return n number of random playing cards
      */
-    public List<PlayingCard> dealHand(int n) {
+    public Collection<PlayingCard> dealHand(int n) {
         if (n > cards.size() || n < 0) {
             throw new IllegalArgumentException("Parameter n must be between 0 and " + cards.size());
         } 
 
         Random random = new Random();
 
-        List<PlayingCard> hand = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            int index = random.nextInt(cards.size());
-            hand.add(cards.remove(index));
+        HashSet<PlayingCard> cards = new HashSet<>();
+        while (cards.size() < n){
+            System.out.println("cards.size() = " + cards.size());
+            int index = random.nextInt(this.cards.size());
+            cards.add(this.cards.get(index)); 
         }
 
-        return hand;
+        return cards;
+    }
+
+
+    /**
+     * Returns the number of cards in the deck
+     * 
+     * @return the number of cards in the deck
+     */
+    public int getNumberOfCards() {
+        return this.cards.size();
     }
 }
