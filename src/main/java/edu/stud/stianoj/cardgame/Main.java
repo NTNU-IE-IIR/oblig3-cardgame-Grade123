@@ -1,23 +1,9 @@
 package edu.stud.stianoj.cardgame;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+import edu.stud.stianoj.cardgame.presentation.CardGameApplication;
 
-public class Main extends Application{
+public class Main{
     public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
-        BorderPane myBorder = new BorderPane();
-
-        Scene myScene = new Scene(myBorder, 800, 600, Color.ORANGE);
-        primaryStage.setScene(myScene);
-        primaryStage.show();
+        CardGameApplication.appMain(args);
     }
 }

@@ -37,7 +37,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>edu.stud.stianoj.cardgame.Main</mainClass>
+                    <mainClass>edu.stud.stianoj.cardgame.presentation.CardGameApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
