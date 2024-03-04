@@ -27,6 +27,8 @@ public class DeckOfCards {
     /**
      * Returns n number of playing cards
      * 
+     * <p> Uses a hashset to ensure that the cards are unique
+     * 
      * @param n number of cards to return
      * @throws IllegalArgumentException if n is greater than the number of cards in the deck or negative
      * @return n number of random playing cards
