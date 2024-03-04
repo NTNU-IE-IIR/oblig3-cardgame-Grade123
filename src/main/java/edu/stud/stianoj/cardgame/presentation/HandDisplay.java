@@ -4,19 +4,17 @@ import java.util.Collection;
 
 import edu.stud.stianoj.cardgame.HandOfCards;
 import edu.stud.stianoj.cardgame.PlayingCard;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
-public class HandDisplay extends Pane {
-    
-    private VBox vBox;
+public class HandDisplay extends HBox {
 
     public HandDisplay() {
         super();
 
-        vBox = new VBox();
-        this.getChildren().add(vBox);
+        this.setSpacing(20);
+        this.setAlignment(Pos.CENTER);
     }
 
     /**
@@ -25,13 +23,13 @@ public class HandDisplay extends Pane {
      */
     public void displayHand(HandOfCards hand) {
 
-        vBox.getChildren().clear();
+        this.getChildren().clear();
 
         Collection<PlayingCard> cards = hand.getCards();
 
         for (PlayingCard card : cards) {
-            Label label = new Label(card.toString());
-            vBox.getChildren().add(label);
+            Label label = new Label(card.getAsString());
+            this.getChildren().add(label);
         }
     }
 }

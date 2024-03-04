@@ -6,6 +6,8 @@ import edu.stud.stianoj.cardgame.DeckOfCards;
 import edu.stud.stianoj.cardgame.HandOfCards;
 import edu.stud.stianoj.cardgame.PlayingCard;
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -18,8 +20,6 @@ public class CardGameApplication extends Application{
     DeckOfCards deck;
 
     private void dealCards() {
-        System.out.println("Dealing cards");
-
         Collection<PlayingCard> cards = deck.dealHand(5);
         HandOfCards hand = new HandOfCards(cards);
 
@@ -32,13 +32,19 @@ public class CardGameApplication extends Application{
 
     private void addRightButtons(BorderPane borderPane) {
         Button dealButton = new Button("Deal");
+        dealButton.setPrefSize(100, 100);
+
         Button checkButton = new Button("Check");
+        checkButton.setPrefSize(100, 100);
 
         dealButton.setOnAction(e -> dealCards());
         checkButton.setOnAction(e -> checkHand());
 
         VBox buttonsContainer = new VBox();
         buttonsContainer.getChildren().addAll(dealButton, checkButton);
+        buttonsContainer.setAlignment(Pos.CENTER);
+        buttonsContainer.setPadding(new Insets(20));
+        buttonsContainer.setSpacing(20);
 
         borderPane.setRight(buttonsContainer);
     }

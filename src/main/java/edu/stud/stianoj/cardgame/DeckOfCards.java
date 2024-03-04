@@ -42,7 +42,6 @@ public class DeckOfCards {
 
         HashSet<PlayingCard> cards = new HashSet<>();
         while (cards.size() < n){
-            System.out.println("cards.size() = " + cards.size());
             int index = random.nextInt(this.cards.size());
             cards.add(this.cards.get(index)); 
         }
