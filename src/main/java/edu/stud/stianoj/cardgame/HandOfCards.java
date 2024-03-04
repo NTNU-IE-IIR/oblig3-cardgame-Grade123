@@ -34,4 +34,59 @@ public class HandOfCards {
     public Collection<PlayingCard> getCards() {
         return this.cards;
     }
+
+    /**
+     * Calculates and returns the sum of the cards
+     * 
+     * @return sum of the card's faces
+     */
+    public int getSum() {
+        return cards.stream().mapToInt(PlayingCard::getFace).sum();
+    }
+
+    /**
+     * Returns all the cards of a suit in the hand
+     * @throws IllegalArgumentException if the suit is invalid
+     * @return collection of cards of the suit
+     */
+    public Collection<PlayingCard> getSuit(char suit) throws IllegalArgumentException {
+        if (suit != 'S' && suit != 'H' && suit != 'D' && suit != 'C') {
+            throw new IllegalArgumentException("Suit must be one of S, H, D, or C");
+        }
+
+        return cards.stream().filter(card -> card.getSuit() == suit).toList();
+    }
+
+    /**
+     * Checks if a card is in the hand
+     * 
+     * @param suit suit of the card to check for
+     * @param face face of the card to check for
+     * @throws IllegalArgumentException if the suit or face is invalid
+     * @return true if the card is in the hand, false otherwise
+     */
+    public boolean containsCard(char suit, int face)  throws IllegalArgumentException {
+        if (suit != 'S' && suit != 'H' && suit != 'D' && suit != 'C') {
+            throw new IllegalArgumentException("Suit must be one of S, H, D, or C");
+        }
+
+        if (face < 1 || face > 13) {
+            throw new IllegalArgumentException("Face must be between 1 and 13");
+        }
+
+        return cards.stream().anyMatch(
+            card -> card.getSuit() == suit && card.getFace() == face);
+    }
+
+    /**
+     * Check if the hand contains a flush
+     * 
+     * <p> Internally checks the number of distinct stuis and if the number is 1
+     * Then returns true, otherwise false
+     * 
+     * @return true if the hand contains a flush, false otherwise
+     */
+    public boolean isFlush() {
+        return cards.stream().map(PlayingCard::getSuit).distinct().count() == 1;
+    }
 }
