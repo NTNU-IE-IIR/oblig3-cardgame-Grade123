@@ -17,17 +17,23 @@ import javafx.stage.Stage;
 public class CardGameApplication extends Application{
 
     HandDisplay handDisplay;
+    HandStatsDisplay handStatsDisplay;
     DeckOfCards deck;
+    HandOfCards currentHand;
 
     private void dealCards() {
         Collection<PlayingCard> cards = deck.dealHand(5);
-        HandOfCards hand = new HandOfCards(cards);
+        currentHand = new HandOfCards(cards);
 
-        handDisplay.displayHand(hand);
+        handDisplay.displayHand(currentHand);
     }
 
     private void checkHand() {
+        if (currentHand == null) {
+           return;
+        }
 
+        handStatsDisplay.displayHandStats(currentHand);
     }
 
     private void addRightButtons(BorderPane borderPane) {
@@ -54,12 +60,14 @@ public class CardGameApplication extends Application{
         deck = new DeckOfCards();
 
         handDisplay = new HandDisplay();
+        handStatsDisplay = new HandStatsDisplay();
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(handDisplay);
+        borderPane.setBottom(handStatsDisplay);
         addRightButtons(borderPane);
 
-        Scene scene = new Scene(borderPane, 800, 800);
+        Scene scene = new Scene(borderPane, 1000, 800);
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Card Game");
