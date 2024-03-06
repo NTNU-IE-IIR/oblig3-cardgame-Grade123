@@ -32,7 +32,6 @@ public class HandDisplay extends FlowPane {
      * @param hand to display
      */
     public void displayHand(HandOfCards hand) {
-        System.out.println("Displaying hand");
         this.getChildren().clear();
 
         Collection<PlayingCard> cards = hand.getCards();
