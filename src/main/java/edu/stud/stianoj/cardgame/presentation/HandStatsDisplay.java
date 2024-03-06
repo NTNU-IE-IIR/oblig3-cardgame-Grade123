@@ -12,7 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 public class HandStatsDisplay extends GridPane {
-    
+
     private InfoRow sumContainer;
     private InfoRow cardsOfHeartContianer;
     private InfoRow flushContainer;
@@ -21,22 +21,22 @@ public class HandStatsDisplay extends GridPane {
     public HandStatsDisplay() {
         super();
 
-        setHgap(20);
-        setVgap(20);
-        setAlignment(Pos.CENTER);
-        setPadding(new Insets(20));
+        this.setHgap(20);
+        this.setVgap(20);
+        this.setAlignment(Pos.CENTER);
+        this.setPadding(new Insets(20));
 
         sumContainer = new InfoRow("Sum of cards", "");
-        add(sumContainer, 0, 0);
+        this.add(sumContainer, 0, 0);
 
         cardsOfHeartContianer = new InfoRow("Cards of heart", "");
-        add(cardsOfHeartContianer, 1, 0);
+        this.add(cardsOfHeartContianer, 1, 0);
 
         flushContainer = new InfoRow("Is Flush", "");
-        add(flushContainer, 0, 1);
+        this.add(flushContainer, 0, 1);
 
         queenOfSpadeContainer = new InfoRow("Has Queen of Spade", "");
-        add(queenOfSpadeContainer, 1, 1);
+        this.add(queenOfSpadeContainer, 1, 1);
     }
 
     public void displayHandStats(HandOfCards hand) {
