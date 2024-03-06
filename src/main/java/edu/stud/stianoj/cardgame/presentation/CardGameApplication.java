@@ -40,8 +40,8 @@ public class CardGameApplication extends Application{
         buttonsContainer.setSpacing(20);
         
         BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(handDisplay);
-        borderPane.setBottom(handStatsDisplay);
+        borderPane.setCenter(handDisplay.getNode());
+        borderPane.setBottom(handStatsDisplay.getNode());
         borderPane.setRight(buttonsContainer);
 
         Scene scene = new Scene(borderPane, 1000, 800);

@@ -6,6 +6,7 @@ import java.util.Collection;
 import edu.stud.stianoj.cardgame.HandOfCards;
 import edu.stud.stianoj.cardgame.PlayingCard;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -14,7 +15,9 @@ import javafx.scene.layout.FlowPane;
  * Hand display class
  * used to display a handofcards as a graphical user interface
  */
-public class HandDisplay extends FlowPane {
+public class HandDisplay {
+
+    private FlowPane flowPane;
 
     /**
      * Constructor for HandDisplay
@@ -22,9 +25,18 @@ public class HandDisplay extends FlowPane {
     public HandDisplay() {
         super();
 
-        this.setVgap(20);
-        this.setHgap(20);
-        this.setAlignment(Pos.CENTER);
+        this.flowPane = new FlowPane();
+
+        this.flowPane.setVgap(20);
+        this.flowPane.setHgap(20);
+        this.flowPane.setAlignment(Pos.CENTER);
+    }
+
+    /**
+     * Returns the node
+     */
+    public Node getNode() {
+        return this.flowPane;
     }
 
     /**
@@ -32,7 +44,7 @@ public class HandDisplay extends FlowPane {
      * @param hand to display
      */
     public void displayHand(HandOfCards hand) {
-        this.getChildren().clear();
+        this.flowPane.getChildren().clear();
 
         Collection<PlayingCard> cards = hand.getCards();
 
@@ -44,7 +56,7 @@ public class HandDisplay extends FlowPane {
                 double aspect = cardImage.getWidth() / cardImage.getHeight();
                 cardImageView.setFitHeight(200);
                 cardImageView.setFitWidth(200 * aspect);
-                this.getChildren().add(cardImageView);
+                this.flowPane.getChildren().add(cardImageView);
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }

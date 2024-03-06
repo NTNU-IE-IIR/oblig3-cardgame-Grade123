@@ -11,7 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
-public class HandStatsDisplay extends GridPane {
+public class HandStatsDisplay {
+    private GridPane gridPane;
 
     private InfoRow sumContainer;
     private InfoRow cardsOfHeartContianer;
@@ -21,22 +22,28 @@ public class HandStatsDisplay extends GridPane {
     public HandStatsDisplay() {
         super();
 
-        this.setHgap(20);
-        this.setVgap(20);
-        this.setAlignment(Pos.CENTER);
-        this.setPadding(new Insets(20));
+        this.gridPane = new GridPane();
+
+        this.gridPane.setHgap(20);
+        this.gridPane.setVgap(20);
+        this.gridPane.setAlignment(Pos.CENTER);
+        this.gridPane.setPadding(new Insets(20));
 
         sumContainer = new InfoRow("Sum of cards", "");
-        this.add(sumContainer, 0, 0);
+        this.gridPane.add(sumContainer, 0, 0);
 
         cardsOfHeartContianer = new InfoRow("Cards of heart", "");
-        this.add(cardsOfHeartContianer, 1, 0);
+        this.gridPane.add(cardsOfHeartContianer, 1, 0);
 
         flushContainer = new InfoRow("Is Flush", "");
-        this.add(flushContainer, 0, 1);
+        this.gridPane.add(flushContainer, 0, 1);
 
         queenOfSpadeContainer = new InfoRow("Has Queen of Spade", "");
-        this.add(queenOfSpadeContainer, 1, 1);
+        this.gridPane.add(queenOfSpadeContainer, 1, 1);
+    }
+
+    public GridPane getNode() {
+        return this.gridPane;
     }
 
     public void displayHandStats(HandOfCards hand) {
