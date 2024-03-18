@@ -12,80 +12,82 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Card game application class
- * 
- * <p> Follow the mvp pattern of designing applications
- * 
+ * Card game application class.
+ *
+ * <p>Follow the mvp pattern of designing applications.
+ *
  * @author stianoj
  * @since 18/03/2024
  */
 public class CardGameApplication extends Application{
 
-    HandDisplay handDisplay;
-    HandStatsDisplay handStatsDisplay;
-    CardGameController cardGameController;
-    
-    /**
-     * Start method for the application
-     * Builds the view of the application
-     */
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        cardGameController = new CardGameController(this);
+  HandDisplay handDisplay;
+  HandStatsDisplay handStatsDisplay;
+  CardGameController cardGameController;
 
-        handDisplay = new HandDisplay();
-        handStatsDisplay = new HandStatsDisplay();
+  /**
+   * Start method for the application.
+   * Builds the view of the application
+   */
+  @Override
+  public void start(Stage primaryStage) throws Exception {
+    cardGameController = new CardGameController(this);
 
-        Button dealButton = new Button("Deal");
-        dealButton.setPrefSize(100, 100);
+    handDisplay = new HandDisplay();
+    handStatsDisplay = new HandStatsDisplay();
 
-        Button checkButton = new Button("Check");
-        checkButton.setPrefSize(100, 100);
+    Button dealButton = new Button("Deal");
+    dealButton.setPrefSize(100, 100);
 
-        dealButton.setOnAction(e -> this.cardGameController.doDeal());
-        checkButton.setOnAction(e -> this.cardGameController.doCheck());
+    Button checkButton = new Button("Check");
+    checkButton.setPrefSize(100, 100);
 
-        VBox buttonsContainer = new VBox();
-        buttonsContainer.getChildren().addAll(dealButton, checkButton);
-        buttonsContainer.setAlignment(Pos.CENTER);
-        buttonsContainer.setPadding(new Insets(20));
-        buttonsContainer.setSpacing(20);
-        
-        BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(handDisplay.getNode());
-        borderPane.setBottom(handStatsDisplay.getNode());
-        borderPane.setRight(buttonsContainer);
+    dealButton.setOnAction(e -> this.cardGameController.doDeal());
+    checkButton.setOnAction(e -> this.cardGameController.doCheck());
 
-        Scene scene = new Scene(borderPane, 1000, 800);
+    VBox buttonsContainer = new VBox();
+    buttonsContainer.getChildren().addAll(dealButton, checkButton);
+    buttonsContainer.setAlignment(Pos.CENTER);
+    buttonsContainer.setPadding(new Insets(20));
+    buttonsContainer.setSpacing(20);
 
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Card Game");
-        primaryStage.show();
-    }
+    BorderPane borderPane = new BorderPane();
+    borderPane.setCenter(handDisplay.getNode());
+    borderPane.setBottom(handStatsDisplay.getNode());
+    borderPane.setRight(buttonsContainer);
 
-    /**
-     * Show the hand of cards
-     * @param hand to show
-     */
-    public void showHand(HandOfCards hand) {
-        handDisplay.displayHand(hand);
-    }
+    Scene scene = new Scene(borderPane, 1000, 800);
 
-    /**
-     * Show the hand statistics
-     * @param hand to show
-     */
-    public void showHandStats(HandOfCards hand) {
-        handStatsDisplay.displayHandStats(hand);
-    }
+    primaryStage.setScene(scene);
+    primaryStage.setTitle("Card Game");
+    primaryStage.show();
+  }
 
-    /**
-     * Main method for the application
-     * Launches the application
-     * 
-     * @param args
-     */
-    public static void appMain(String[] args) {
-        launch(args);
-    }
+  /**
+   * Show the hand of cards.
+   *
+   * @param hand to show
+   */
+  public void showHand(HandOfCards hand) {
+    handDisplay.displayHand(hand);
+  }
+
+  /**
+   * Show the hand statistics.
+   *
+   * @param hand to show
+   */
+  public void showHandStats(HandOfCards hand) {
+    handStatsDisplay.displayHandStats(hand);
+  }
+
+  /**
+   * Main method for the application.
+   * Launches the application
+   *
+   * @param args command line arguments
+   */
+  public static void appMain(String[] args) {
+    launch(args);
+  }
 }
