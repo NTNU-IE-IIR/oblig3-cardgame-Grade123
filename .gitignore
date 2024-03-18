@@ -7,3 +7,5 @@ out/
 
 # Maven
 target/
+
+.vscode/
