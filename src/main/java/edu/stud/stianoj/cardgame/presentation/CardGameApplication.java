@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  * @author stianoj
  * @since 18/03/2024
  */
-public class CardGameApplication extends Application{
+public class CardGameApplication extends Application {
 
   HandDisplay handDisplay;
   HandStatsDisplay handStatsDisplay;
