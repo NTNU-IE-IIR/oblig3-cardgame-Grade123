@@ -11,12 +11,24 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Card game application class
+ * 
+ * <p> Follow the mvp pattern of designing applications
+ * 
+ * @author stianoj
+ * @since 18/03/2024
+ */
 public class CardGameApplication extends Application{
 
     HandDisplay handDisplay;
     HandStatsDisplay handStatsDisplay;
     CardGameController cardGameController;
     
+    /**
+     * Start method for the application
+     * Builds the view of the application
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         cardGameController = new CardGameController(this);
@@ -51,14 +63,28 @@ public class CardGameApplication extends Application{
         primaryStage.show();
     }
 
+    /**
+     * Show the hand of cards
+     * @param hand to show
+     */
     public void showHand(HandOfCards hand) {
         handDisplay.displayHand(hand);
     }
 
+    /**
+     * Show the hand statistics
+     * @param hand to show
+     */
     public void showHandStats(HandOfCards hand) {
         handStatsDisplay.displayHandStats(hand);
     }
 
+    /**
+     * Main method for the application
+     * Launches the application
+     * 
+     * @param args
+     */
     public static void appMain(String[] args) {
         launch(args);
     }

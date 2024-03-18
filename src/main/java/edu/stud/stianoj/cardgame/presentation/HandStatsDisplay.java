@@ -11,6 +11,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+/**
+ * Hand stats display class
+ * used to display the stats of a hand of cards as a graphical user interface
+ */
 public class HandStatsDisplay {
     private GridPane gridPane;
 
@@ -19,9 +23,10 @@ public class HandStatsDisplay {
     private InfoRow flushContainer;
     private InfoRow queenOfSpadeContainer;
 
+    /**
+     * Constructor for HandStatsDisplay
+     */
     public HandStatsDisplay() {
-        super();
-
         this.gridPane = new GridPane();
 
         this.gridPane.setHgap(20);
@@ -42,10 +47,17 @@ public class HandStatsDisplay {
         this.gridPane.add(queenOfSpadeContainer, 1, 1);
     }
 
+    /**
+     * Returns the node that the display is rendered in
+     */
     public GridPane getNode() {
         return this.gridPane;
     }
 
+    /**
+     * Display the stats of a hand of cards
+     * @param hand to display the stats of
+     */
     public void displayHandStats(HandOfCards hand) {
         int sum = hand.getSum();
         sumContainer.setValue(Integer.toString(sum));
@@ -61,10 +73,19 @@ public class HandStatsDisplay {
         queenOfSpadeContainer.setValue(Boolean.toString(hasQueenOfSpade));
     }
 
+    /**
+     * Inner class used to represent a row in the display
+     * used to display a title and a value
+    */
     private class InfoRow extends HBox{
         
         private TextField valueLabel;
 
+        /**
+         * Constructor for InfoRow
+         * @param title of the row
+         * @param value of the row
+         */
         public InfoRow(String title, String value) {
             super();
 
